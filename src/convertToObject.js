@@ -8,14 +8,14 @@
 function convertToObject(sourceString) {
   const stylesObject = {};
 
-  const clean = sourceString.split(';').map((array) => array.trim());
+  const declaration = sourceString.split(';').map((array) => array.trim());
 
-  clean.forEach((string) => {
-    if (!string) {
+  declaration.forEach((declarationString) => {
+    if (!declarationString) {
       return;
     }
 
-    const [key, value] = string.split(':');
+    const [key, value] = declarationString.split(':');
 
     stylesObject[key.trim()] = value.trim();
   });
