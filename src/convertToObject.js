@@ -8,7 +8,7 @@
 function convertToObject(sourceString) {
   const stylesObject = {};
 
-  const declaration = sourceString.split(';').map((array) => array.trim());
+  const declaration = sourceString.split(';').map((part) => part.trim());
 
   declaration.forEach((declarationString) => {
     if (!declarationString) {
@@ -16,6 +16,10 @@ function convertToObject(sourceString) {
     }
 
     const [key, value] = declarationString.split(':');
+
+    if (value === undefined) {
+      return;
+    }
 
     stylesObject[key.trim()] = value.trim();
   });
